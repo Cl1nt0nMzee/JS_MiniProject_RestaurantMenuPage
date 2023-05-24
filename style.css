@@ -1,0 +1,45 @@
+*, *::before, *::after{
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: none; /* for iOS Safari */
+    text-size-adjust: none;/* for other mobile browser */
+}
+
+body {
+    font-size: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+img, svg {
+    display: block;
+    max-width: 100%;    
+}
+
+
+menu:not(article menu),
+ol:not(article ol),
+ul:not(article ul) {
+    list-style: none;
+}
+
+menu, ol, ul {
+    padding-left: 0;
+}
+
+:focus:not(:focus-visible) {
+    outline:none
+}
+
+@font-face {
+    font-family: 'Givonic Bold';
+    src: url(/src/assets/Givonic_Fonts/Givonic-Bold.ttf);
+    font-weight: 400;
+    font-style: normal;
+}
