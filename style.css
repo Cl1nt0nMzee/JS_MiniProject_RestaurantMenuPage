@@ -1,3 +1,72 @@
+:root {
+     /* Colors */
+--primBlue-100:  #00ABFF;
+--primBlue-200:  #009AE5;
+--primBlue-300:  #0089CC;
+--primBlue-400:  #0078B2;
+--primBlue-500:  #006799; 
+--primBlue-600:  #005580;
+--primBlue-700:  #004466;
+--primBlue-800:  #00334D;
+--primBlue-900:  #002233;
+--primBlue-1000: #00111A;
+
+--primGreen-100:  #00FF92;
+--primGreen-200:  #00E583;
+--primGreen-300:  #00CC74;
+--primGreen-400:  #00B265;
+--primGreen-500:  #009957;
+--primGreen-600:  #008049;
+--primGreen-700:  #00663A;
+--primGreen-800:  #004D2C;
+--primGreen-900:  #00331E;
+--primGreen-1000: #001A0F;
+
+--accShade-100:  #E6E6E6;
+--accShade-200:  #CCCCCC;
+--accShade-300:  #B3B3B3;
+--accShade-400:  #999999;
+--accShade-500:  #808080;
+--accShade-600:  #666666;
+--accShade-700:  #4C4C4C;
+--accShade-800:  #333333;
+--accShade-900:  #191919;
+
+--neuDark-100: #0A0A0A;
+--neuDark-75: #1A1A1A;
+--neuDark-50: #262626;
+--neuDark-25: #333333;
+
+--neuWhite-100: #FEFEFE;
+--neuWhite-75: #F2F2F2;
+--neuWhite-50: #E6E6E6;
+--neuWhite-25: #D9D9D9;
+
+--focPurple-100: #3C008C;
+--focPurple-75: #4C00B2;
+--focPurple-50: #5D00D9;
+--focPurple-25: #6D00FF;
+
+--warnOrange-100: #402000;
+--warnOrange-75: #804100;
+--warnOrange-50: #BF6100;
+--warnOrange-25: #FF8200;
+
+--errRed-100: #8C1C1F;
+--errRed-75: #B32427;
+--errRed-50: #D92B30;
+--errRed-25: #FF3338;
+
+--succGreen-100: #097400;
+--succGreen-75: #0C9900;
+--succGreen-50: #10BF00;
+--succGreen-25: #13E500;
+
+--radius-20: 20px;
+
+--boxShadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
 *, *::before, *::after{
     padding: 0;
     border: none;
@@ -11,6 +80,8 @@ html {
 
 body {
     font-size: 100%;
+    background-color: var(--neuDark-75);
+    
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -38,8 +109,330 @@ menu, ol, ul {
 }
 
 @font-face {
-    font-family: 'Givonic Bold';
-    src: url(/src/assets/Givonic_Fonts/Givonic-Bold.ttf);
+    font-family: 'Givonic-Black';
+    src:    url(/assets/fonts/Givonic/Givonic-Black.ttf) format('truetype'),
+            url(/assets/fonts/Givonic/Givonic-Black.otf) format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Givonic-Bold';
+    src:    url(/assets/fonts/Givonic/Givonic-Bold.ttf) format('truetype'),
+            url(/assets/fonts/Givonic/Givonic-Bold.otf) format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Givonic-Sembold';
+    src:    url(/assets/fonts/Givonic/Givonic-SemiBold.ttf) format('truetype'),
+            url(/assets/fonts/Givonic/Givonic-SemiBold.otf) format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Givonic-Regular';
+    src:    url(/assets/fonts/Givonic/Givonic-Regular.ttf) format('truetype'),
+            url(/assets/fonts/Givonic/Givonic-Regular.otf) format('opentype');
+    font-weight: 450;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Givonic-Light';
+    src:    url(/assets/fonts/Givonic/Givonic-Light.ttf) format('truetype'),
+            url(/assets/fonts/Givonic/Givonic-Light.otf) format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Givonic-Thin';
+    src:    url(/assets/fonts/Givonic/Givonic-Thin.ttf) format('truetype'),
+            url(/assets/fonts/Givonic/Givonic-Thin.otf) format('opentype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter-Medium';
+    src:    url(/assets/fonts/Inter/Inter-Medium.ttf) format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter-Regular';
+    src:    url(/assets/fonts/Inter/Inter-Regular.ttf) format('truetype');
     font-weight: 400;
     font-style: normal;
 }
+
+/* Layout */
+section {
+    width: 100%;
+    max-width: 1060px;
+    margin: 0px auto;
+}
+.header {
+    width: 100%;
+    max-width: 700px;
+    margin: 32px auto;
+}
+.itemsSection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.headerTopWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+.headerBottomWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+/* Typography */
+h1 {
+
+    width: 400px;
+
+    font-family: 'Givonic-Black', sans-serif;
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--neuWhite-75);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 62px;
+
+    text-align: center;
+}
+
+.body1 {
+    font-family: 'Givonic-Semibold', sans-serif;
+    font-size: 18;
+    font-weight: 600;
+    color: var(--accShade-100);
+    line-height: 1.2;
+}
+
+.body2 {
+    font-family: 'Givonic-Regular', sans-serif;
+    font-size: 18;
+    font-weight: 450;
+    color: var(--accShade-300);
+    line-height: 1;
+}
+
+/* Atoms */
+/* 
+    Filter Chip  
+                    */
+
+.filterChip {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    gap: 12px;
+    color: var(--accShade-600);
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+    background-color: var(--accShade-100);
+
+    padding: 5px 15px;
+    margin: 8px;
+    border-radius: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.filterChip input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.filterChip:has(:checked) {
+    color: var(--accShade-100);
+    background-color: var(--primGreen-600);    
+}
+.filterChip:has(:checked) ~ .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: var(--primGreen-700);
+}
+
+.filterChip input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.filterChip ~ .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.container {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    padding-left: 29px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-right: 19px;
+    margin: 12px 6px;
+    width: fit-content;
+
+    border-radius: 4px;
+
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1;
+    color: var(--accShade-100);
+    background-color: transparent;
+    border: 2px solid var(--accShade-700);
+
+    cursor: pointer;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .container.checked {
+    border: none;
+    background-color: var(--accShade-700);
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 5px;
+        left: 11px;
+        height: 18px;
+        width: 18px;
+        background-color: var(--accShade-100);
+    }
+
+    /* On mouse-over, add a grey background color */
+    .container:hover input ~ .checkmark {
+        background-color: var(--accShade-6s00);
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .container input:checked ~ .checkmark {
+        background-color: transparent;
+    }
+
+    .container:has(input:checked) {
+    color: var(--accShade-100);
+    background-color: var(--primGreen-500);
+
+    padding-left: 34px;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .container input:checked ~ .checkmark:after {
+    display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .container .checkmark:after {
+    left: 6px;
+    top: 6px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2.5px 2.5px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    }
+
+    .container input {
+    margin-top: 140px;
+    }
+
+    .container:has(input[type=checkbox]:focus-visible) {
+        outline: solid 2px var(--focPurple-75);
+        outline-offset: 3px;
+    }
+
+
+/* Food_Item-Card */
+.foodComponent {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 340px;
+    padding: 24px 45px;
+    margin: 20px;
+    background-color: #33333330;
+
+    align-self: start;
+}
+
+.foodComponent img{
+    width: 100%;
+}
+
+.foodComponent h3 {
+    font-family: 'Givonic-Bold', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--accShade-100);
+}
+
+.foodComponent h4 {
+    font-family: 'Inter-Medium', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--accShade-300);
+}
+
+.foodComponent .pWrapper {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    line-clamp: 1;
+
+}
+
+.foodComponent p {
+    font-family: 'Inter-Regular', serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--accShade-400);
+}
+
