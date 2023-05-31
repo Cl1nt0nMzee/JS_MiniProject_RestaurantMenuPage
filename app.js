@@ -1,6 +1,7 @@
 const clearButton_El = document.getElementById('clear');
 const itemsWrapper_El = document.getElementById('itemsSection');
-const filterChips_Els = document.getElementById('container')
+const filterChips_Els = document.getElementById('container');
+const filter_Chips = document.querySelectorAll('.Fil_Chip_container');
 
 
 const menuItems = [
@@ -67,21 +68,53 @@ function populateMenu(element) {
 }
 []
 
-// Manage Chips
+// Manage Chips     
+/*
 filterChips_Els.addEventListener('click', function (event) {
     let current = event.target
     
     current.setAttribute('class','container checked');
+}) */
+
+filterChips_Els.addEventListener('click', (event) => {
+    let status, current
+
+    current = event.target;
+    status = current.checked;
+
+    if (status === true) {
+        filterChips_Els.setAttribute('class','Fil_Chip_container checked');
+    } else if(status === false) {
+        filterChips_Els.setAttribute('class','Fil_Chip_container');
+    }
 })
 
 
-
 // Zwischenstation
-clearButton_El.addEventListener('click', ()=> {
-    console.log('Helo')
+clearButton_El.addEventListener('click', function(event) {
+    let status, current
+
+    current = event.target;
+    status = ve.checked;
+    console.log(status)
 })
 
 console.log(menuItems[0])
 console.log(menuItems[0]['title'])
 
-populateMenu(menuItems)
+populateMenu(menuItems);
+
+filter_Chips.forEach(item => {
+    item.addEventListener('click', event => {
+        let status, current
+
+        current = event.target;
+        status = current.checked;
+    
+        if (status === true) {
+            item.setAttribute('class','Fil_Chip_container checked');
+        } else if(status === false) {
+            item.setAttribute('class','Fil_Chip_container');
+        }
+    })
+})
