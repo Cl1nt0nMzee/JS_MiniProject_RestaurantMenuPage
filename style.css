@@ -179,7 +179,10 @@ section {
 .itemsSection {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 20px 0px;
+    width: 100%;
 }
+
 .headerTopWrapper {
     display: flex;
     flex-direction: column;
@@ -223,6 +226,10 @@ h1 {
     font-weight: 450;
     color: var(--accShade-300);
     line-height: 1;
+}
+
+.pWrapper {
+    max-height: 52.5px;
 }
 
 /* Atoms */
@@ -388,19 +395,76 @@ h1 {
         outline: solid 2px var(--focPurple-75);
         outline-offset: 3px;
     }
+/* Default State */
+button.text {
+    color: var(--primGreen-600);
+    font-size: 16px;
+    font-weight: 600;
+    padding: 7px 14px;
+    margin: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: transparent;
+    
+    cursor:pointer;
+    transition: all 100ms ease-out;
+}
+/* Hover State */
+button.text:hover {
+    color: var(--primGreen-800);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.1));
+}
+/* Active State */
+button.text:active {
+    color: var(--primGreen-800);
+    transform: translateY(4px);
+}
+/* Focus State */
+button.text:focus-visible {
+    color: var(--primGreen-800);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.1));
+    outline: solid 2px var(--focPurple-75) ;
+    outline-offset: 3px;
+}
+/* 
+Disabled State  (incl. hover,active, while disabled)*/ 
+button.text:is(:disabled) {
+    color: var(--accShade-300);
+    cursor: not-allowed;
+}
+button.text:is(:disabled):hover {
+    color: var(--accShade-300);
+    box-shadow: none;
+}
+button.text:is(:disabled):active {
+    transform: translateY(0);
+}
+/* 
+Different Sizes   (def:medium, (small and large def here)*/
+button.text.small {
+    font-size: 12px;
+    padding: 6px 12px;
+    margin: 8px;
+}
 
+button.text.large {
+    font-size: 18px;
+    padding: 9px 18px;
+    margin: 8px;
+}
 
 /* Food_Item-Card */
 .foodComponent {
     display: inline-flex;
     flex-direction: column;
     gap: 12px;
-    width: 340px;
-    padding: 24px 45px;
+    max-width: 340px;
+    padding: 24px 32px;
     margin: 20px;
     background-color: #33333330;
 
     align-self: start;
+    border-radius: 8px;
 }
 
 .foodComponent img{
@@ -434,5 +498,11 @@ h1 {
     font-size: 14px;
     font-weight: 400;
     color: var(--accShade-400);
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
