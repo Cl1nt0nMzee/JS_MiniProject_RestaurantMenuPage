@@ -2,7 +2,7 @@ const clearButton_El = document.getElementById('clear');
 const itemsWrapper_El = document.getElementById('itemsSection');
 const filterChips_Els = document.getElementById('container');
 const filter_Chips = document.querySelectorAll('.Fil_Chip_container');
-
+const delete_Chips_Wrapper_El = document.getElementById('delWrap');
 
 const menuItems = [
     {
@@ -114,24 +114,45 @@ filter_Chips.forEach(item => {
         status = current.checked;
         
         value = current.getAttribute('value');
+        id = current.getAttribute('data-value');
 
         if (status === true) {
             item.setAttribute('class','Fil_Chip_container checked');
 
             active_filters.push(value);
-            console.log(active_filters)
+            console.log(active_filters);
+            createDeletechip(id, value);
+
         } else if(status === false) {
             item.setAttribute('class','Fil_Chip_container');
 
             index = active_filters.indexOf(`${value}`)
             active_filters.splice(index, 1)
             console.log(active_filters)
+
+            removeDeletableChip(id);
         }
     })
 })
 
-function createDeletechip(){
-    let current, wrapper = filterChips_Els
+function createDeletechip(element, element_2){
+    let current, button
 
+    current = document.createElement('span');
+    current.innerText = `${element_2}`;
+    current.setAttribute('class', 'deletableChips');
+    current.setAttribute('id', `${element}`)
 
+    button = document.createElement('button');
+    button.innerText = "X";
+    current.append(button);
+
+    console.log(current)
+    delete_Chips_Wrapper_El.append(current);
+}
+
+function removeDeletableChip(element) {
+    let current = document.getElementById(`${element}`);
+
+    current.remove();
 }
