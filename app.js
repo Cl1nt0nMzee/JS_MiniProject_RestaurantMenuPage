@@ -33,6 +33,8 @@ const menuItems = [
     }
 ]
 
+current_Items = [];
+active_filters = [];
 
 /* Populate Menu*/
 function populateMenu(element) {
@@ -106,15 +108,30 @@ populateMenu(menuItems);
 
 filter_Chips.forEach(item => {
     item.addEventListener('click', event => {
-        let status, current
+        let status, current, value
 
         current = event.target;
         status = current.checked;
-    
+        
+        value = current.getAttribute('value');
+
         if (status === true) {
             item.setAttribute('class','Fil_Chip_container checked');
+
+            active_filters.push(value);
+            console.log(active_filters)
         } else if(status === false) {
             item.setAttribute('class','Fil_Chip_container');
+
+            index = active_filters.indexOf(`${value}`)
+            active_filters.splice(index, 1)
+            console.log(active_filters)
         }
     })
 })
+
+function createDeletechip(){
+    let current, wrapper = filterChips_Els
+
+
+}
