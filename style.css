@@ -474,15 +474,27 @@ button.text.large {
     gap: 12px;
     justify-content: center;
     align-items: center;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Givonic-SemiBold', sans-serif;
+    font-size: 18px;
     font-weight: 500;
-    color: var(--accShade-100);
+    color: var(--accShade-800);
 
-    background-color: var(--primGreen-700);
+    background-color: var(--accShade-300);
     padding: 5px 15px;
-    border-radius: 20px;
+    border-radius: 4px;
 
     margin: 8px;
+
+    transition: all ease 100ms;
+}
+.deletableChips:hover{
+    background-color: var(--accShade-100);
+}
+
+.deletableChips:has(button:focus-visible) {
+    outline: solid 2px var(--errRed-100) ;
+    outline-offset: 3px;
+    background-color: var(--accShade-100);
 }
 
 .deletableChips button {
@@ -490,7 +502,7 @@ button.text.large {
     font-size: 12px;
     font-weight: 600;
     line-height: 1;
-    background-color: rgba(128, 128, 128, .7);
+    background-color: var(--accShade-800);
     outline: none;
     border: none;
 
@@ -507,7 +519,7 @@ button.text.large {
 }
 .deletableChips button:hover {
     color: var(--neuWhite-50);
-    background-color: var(--accShade-400);
+    background-color: var(--accShade-600);
 }
 
 /* Food_Item-Card */

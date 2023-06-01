@@ -145,6 +145,7 @@ function createDeletechip(element, element_2){
 
     button = document.createElement('button');
     button.innerText = "X";
+    button.setAttribute('onclick', 'kamikazaDeletablechip(event)')
     current.append(button);
 
     console.log(current)
@@ -155,4 +156,21 @@ function removeDeletableChip(element) {
     let current = document.getElementById(`${element}`);
 
     current.remove();
+}
+
+function kamikazaDeletablechip(event) {
+    let current = event.target.parentElement;
+    let button = event.target
+    let value_ = button.innerText
+    current.remove()
+
+    // Search for FilterChip and Uncheck
+    filter_Chips.forEach(item => {
+        let value = item.getAttribute('data-value')
+        if (value_ == value) {
+            item.remove()
+        } else {
+            pass
+        }
+    })
 }
