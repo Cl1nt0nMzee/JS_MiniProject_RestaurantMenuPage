@@ -3,6 +3,7 @@ const itemsWrapper_El = document.getElementById('itemsSection');
 const filterChips_Els = document.getElementById('container');
 const filter_Chips = document.querySelectorAll('.Fil_Chip_container');
 const delete_Chips_Wrapper_El = document.getElementById('delWrap');
+const itemCounter_El = document.getElementById('itemCounter');
 
 const menuItems = [
     {
@@ -114,7 +115,7 @@ const menuItems = [
     },
     {
         id: 13,
-        title: "Strawberry Smoothi",
+        title: "Strawberry Smoothie",
         category: "Smoothie",
         price: 5.90,
         img: "/assets/images/StrawberrySmoothie.png",
@@ -281,6 +282,8 @@ function kamikazaDeletablechip(event) {
 function clearAllFilters() {
     
     let filter_chips = document.querySelectorAll('.Fil_Chip_container input');
+    let del_chips = document.querySelectorAll('.deletableChips button');
+
 
     // Uncheck all Filter Chips
     filter_chips.forEach(item => {
@@ -288,4 +291,16 @@ function clearAllFilters() {
         item.parentElement.setAttribute('class','Fil_Chip_container');
     })
     // Remove all Deletable Chips
+    del_chips.forEach(item => {
+        item.click()
+    })
 }
+
+function updateDisplay() {
+    let count = current_Items.length
+
+    console.log(count);
+    itemCounter_El.innerText = count;
+}
+
+updateDisplay();

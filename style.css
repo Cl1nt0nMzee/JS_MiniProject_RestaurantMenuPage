@@ -575,3 +575,15 @@ button.text.large {
     -webkit-box-orient: vertical;
 }
 
+div .top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.counter {
+    font-family: 'Givonic-Regular', sans-serif;
+    font-weight: 450;
+    font-size: 14px;
+    color: var(--accShade-400);
+}
