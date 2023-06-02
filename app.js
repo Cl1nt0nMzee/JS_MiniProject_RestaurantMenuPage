@@ -97,7 +97,7 @@ clearButton_El.addEventListener('click', function(event) {
     let status, current
 
     current = event.target;
-    status = ve.checked;
+    status = current.checked;
     console.log(status)
 })
 
@@ -173,4 +173,17 @@ function kamikazaDeletablechip(event) {
             pass
         }
     })
+}
+
+
+function clearAllFilters() {
+    
+    let filter_chips = document.querySelectorAll('.Fil_Chip_container input');
+
+    // Uncheck all Filter Chips
+    filter_chips.forEach(item => {
+        item.checked = false;
+        item.parentElement.setAttribute('class','Fil_Chip_container');
+    })
+    // Remove all Deletable Chips
 }
