@@ -3,7 +3,7 @@ JavaScript MiniProject #7
 
 A simple restaurant Menu Page showing delicious recipes with **filtering options**
 
-![](https://restaurant-menu.pages.dev/assets/images/Placeholder-Image.svg)
+![](https://b97afaad.restaurant-menu.pages.dev/assets/images/34729560-D5E5-4E8B-A586-353764085974.jpeg)
 
 [Live Demo here!](https://restaurant-menu.pages.dev/)
 
