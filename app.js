@@ -141,8 +141,6 @@ active_filters = [];
 
 /* Populate Menu*/
 function populateMenu(element) {
-   
-
     element.forEach(element => {
         let current, currentTitle, currentImage, currentPrice, currentCategory, currentDescription
 
@@ -194,14 +192,6 @@ filterChips_Els.addEventListener('click', (event) => {
     }
 })
 
-
-// Zwischenstation
-clearButton_El.addEventListener('click', function(event) {
-    let status, current
-
-    current = event.target;
-    status = current.checked;
-})
 
 
 populateMenu(current_Items);
@@ -260,16 +250,19 @@ function removeDeletableChip(element) {
 function kamikazaDeletablechip(event) {
     let current = event.target.parentElement;
     let button = event.target
-    let value_ = button.innerText
+    let value_ = current.innerText
+    console.log(value_)
     current.remove()
 
     // Search for FilterChip and Uncheck
     filter_Chips.forEach(item => {
-        let value = item.getAttribute('data-value')
-        if (value_ == value) {
-            item.remove()
+        let current = item.firstChild
+        let value = current.getAttribute('data-value');
+        value += '\nX';
+        if (value == `${value_}`) {
+            console.log(value, button)
         } else {
-            pass
+            console.log(value)
         }
     })
 }
