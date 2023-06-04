@@ -1,6 +1,17 @@
-# JS_MiniProject_RestaurantMenuPage
+# Restaurant Menu Page
+JavaScript MiniProject #7
 
-This is a simple project that is part of the JavaScript Mini Project Series.
+A simple restaurant Menu Page showing delicious recipes with **filtering options**
 
-The goal of the series is to learn JavaScript concepts practically through selected projects.
-In this projects the main focus is on using Higher Order Functions (map, reduce & Filter), and also how to document projects (like in this file). 
+![](https://restaurant-menu.pages.dev/assets/images/Placeholder-Image.svg)
+
+[Live Demo here!](https://restaurant-menu.pages.dev/)
+
+
+This is part of the JavaScript Mini Project Series 
+(learning JavaScript through practice projects).
+
+## Project Goal
+Here the main focus is  Higher Order Functions (map, reduce & Filter), 
+and also how to document projects (like in this file). 
+
