@@ -28,7 +28,7 @@
                     <span class="checkmark"></span>
                 </label>
                 <label class="Fil_Chip_container"> Dinner
-                    <input type="checkbox" id="dinner" value="Dinner" data-value="sfwy" >
+                    <input type="checkbox" id="dinner" value="Dinner" data-value="sfwy" onclick="filter(current_Items)">
                     <span class="checkmark"></span>
                 </label>  
             </div>
@@ -37,7 +37,7 @@
             <div class="top">
                 <h2 class="body2"> Aktive Filter</h2>
                 <div>
-                    <p class="counter">Showing <span id="itemCounter"> 5 </span> items </p>
+                    <p class="counter">Es werden <span id="itemCounter"> 5 </span> Ergebnisse angezeigt </p>
                     <button id="clear" class="text small" onclick="clearAllFilters()"> Alle Filter Zurücksetzen</button>
                 </div>
                 

@@ -11,7 +11,7 @@ const menuItems = [
         title: "American Pancakes ",
         category: "breakfast",
         price: 3.990,
-        img: '/assets/images/AmercianPancakes.png',
+        img: '/assets/images/AmercianPancakes.svg',
         des: "Easy, American-style, fluffy pancakes are great for feeding a crowd at breakfast or brunch. Top with something sweet like fruit, jam or syrup, or rashers of crispy bacon."
     },
     {
@@ -136,7 +136,7 @@ const menuItems = [
     
 ]
 
-current_Items = [];
+current_Items = menuItems;
 active_filters = [];
 
 /* Populate Menu*/
@@ -201,13 +201,10 @@ clearButton_El.addEventListener('click', function(event) {
 
     current = event.target;
     status = current.checked;
-    console.log(status)
 })
 
-console.log(menuItems[0])
-console.log(menuItems[0]['title'])
 
-populateMenu(menuItems);
+populateMenu(current_Items);
 
 filter_Chips.forEach(item => {
     item.addEventListener('click', event => {
@@ -223,7 +220,7 @@ filter_Chips.forEach(item => {
             item.setAttribute('class','Fil_Chip_container checked');
 
             active_filters.push(value);
-            console.log(active_filters);
+
             createDeletechip(id, value);
 
         } else if(status === false) {
@@ -231,7 +228,7 @@ filter_Chips.forEach(item => {
 
             index = active_filters.indexOf(`${value}`)
             active_filters.splice(index, 1)
-            console.log(active_filters)
+
 
             removeDeletableChip(id);
         }
@@ -251,7 +248,6 @@ function createDeletechip(element, element_2){
     button.setAttribute('onclick', 'kamikazaDeletablechip(event)')
     current.append(button);
 
-    console.log(current)
     delete_Chips_Wrapper_El.append(current);
 }
 
@@ -299,8 +295,27 @@ function clearAllFilters() {
 function updateDisplay() {
     let count = current_Items.length
 
-    console.log(count);
+    // Manage Items Counter
     itemCounter_El.innerText = count;
+}
+function filter(array_element){
+    let newArray, filters
+
+    // Check active Filters and return them
+    filters = document.querySelectorAll('.deletableChips')
+    filters.forEach(item => {
+        console.log(item)
+    })
+    // Filter Elements
+    array_element.filter()
+
+    // Update New List to Current List
+
+    // Update Display
+}
+
+function testingFunction() {
+    alert('Hiiiiii')
 }
 
 updateDisplay();
