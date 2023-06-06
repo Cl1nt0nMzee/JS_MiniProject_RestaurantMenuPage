@@ -169,15 +169,10 @@ function populateMenu(element) {
     });
 
 }
-[]
 
-// Manage Chips     
-/*
-filterChips_Els.addEventListener('click', function (event) {
-    let current = event.target
-    
-    current.setAttribute('class','container checked');
-}) */
+      
+/*              Manage Filter Chips         
+                                                 
 
 filterChips_Els.addEventListener('click', (event) => {
     let status, current
@@ -190,7 +185,7 @@ filterChips_Els.addEventListener('click', (event) => {
     } else if(status === false) {
         filterChips_Els.setAttribute('class','Fil_Chip_container');
     }
-})
+})          */ 
 
 
 

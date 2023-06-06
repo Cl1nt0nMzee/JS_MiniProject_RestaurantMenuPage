@@ -183,6 +183,27 @@ gap: 20px 0px;
 width: 100%;
 }
 
+@media screen and (min-width: 380px) {
+    .itemsSection {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .itemsSection {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 990px) {
+    .itemsSection {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+
+
 .headerTopWrapper {
 display: flex;
 flex-direction: column;
