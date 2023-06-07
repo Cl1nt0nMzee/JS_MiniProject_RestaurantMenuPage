@@ -172,22 +172,7 @@ function populateMenu(element) {
 
       
 /*              Manage Filter Chips         
-                                                 
-
-filterChips_Els.addEventListener('click', (event) => {
-    let status, current
-
-    current = event.target;
-    status = current.checked;
-
-    if (status === true) {
-        filterChips_Els.setAttribute('class','Fil_Chip_container checked');
-    } else if(status === false) {
-        filterChips_Els.setAttribute('class','Fil_Chip_container');
-    }
-})          */ 
-
-
+                                                 */
 
 populateMenu(current_Items);
 
@@ -290,12 +275,10 @@ function filter(array_element){
     let newArray, filters
 
     // Check active Filters and return them
-    filters = document.querySelectorAll('.deletableChips')
-    filters.forEach(item => {
-        console.log(item)
-    })
+    filters = active_filters
+
     // Filter Elements
-    array_element.filter()
+    new_array = array_element.filter()
 
     // Update New List to Current List
 
