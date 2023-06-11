@@ -1,12 +1,11 @@
-const fil_chip_Elements = document.querySelectorAll('.Fil_Chip_wrapper');
-const del_chip_Elements = document.querySelectorAll('.deletableChips');
-const item_counter_Element = document.getElementById('itemCounter');
-const clear_button_El = document.getElementById('clear');
-const del_chip_container = document.getElementById('delChips_Container');
+const clearButton_El = document.getElementById('clear');
 const itemsWrapper_El = document.getElementById('itemsSection');
+const filterChips_Els = document.getElementById('container');
+const filter_Chips = document.querySelectorAll('.Fil_Chip_container');
+const delete_Chips_Wrapper_El = document.getElementById('delWrap');
+const itemCounter_El = document.getElementById('itemCounter');
 
-
-const menu_database = [
+const menuItems = [
     {
         id: 1,
         title: "American Pancakes ",
@@ -117,7 +116,7 @@ const menu_database = [
     {
         id: 13,
         title: "Strawberry Smoothie",
-        category: "smoothie",
+        category: "Smoothie",
         price: 5.90,
         img: "/assets/images/StrawberrySmoothie.png",
         des: "Get your fruit fix with our strawberry smoothie made with banana and orange juice. It's free from dairy, so it's vegan too – making it a great start to anyone's day"
@@ -126,71 +125,88 @@ const menu_database = [
     {
         id: 14,
         title: "Peanut Butter Smoothie",
-        category: "smoothie",
+        category: "Smoothie",
         price: 6.50,
         img: "/assets/images/PeanutButterSmoothie.png",
         des: "Whizz up a quick and filling peanut butter smoothie, with rolled oats and banana. Brilliant for breakfast, you can freeze the banana for extra thickness"
 
-    }
+    },
+
+
+    
 ]
 
-/* Hold Current Data (Depends on Active Filters) */
-const current_menu = [...menu_database]
-const mock_menu = [    
-{
-    id: 4,
-    title: "Easy Crepes",
-    category: "breakfast",
-    price: 4.20,
-    img: "/assets/images/EasyCrepes.png",
-    des: "Experience the joy of homemade crepes without the fuss. Our easy crepe recipe lets you create delectable, thin pancakes in a snap. Light and delicate, these crepes can be filled with your favorite sweet or savory ingredients. From mouthwatering Nutella and strawberries to savory ham and cheese, the possibilities are endless. With our foolproof recipe, you'll become a crepe master in no time."
+current_Items = menuItems;
+active_filters = ['breakfast', 'dinner'];
 
-},
-{
-    id: 5,
-    title: "Falafel Burgers",
-    category: "lunch",
-    price: 7.90,
-    img: "/assets/images/FalafelBurgers.png",
-    des: "Elevate your burger game with our mouthwatering Falafel Burgers. Crispy, golden-brown falafel patties, bursting with Middle Eastern flavors, are nestled in a soft bun with fresh toppings and zesty sauces. Each bite offers a delightful combination of textures and a satisfyingly hearty and flavorful vegetarian option for burger enthusiasts."
+/* Populate Menu*/
+function populateMenu(element) {
+    element.forEach(element => {
+        let current, currentTitle, currentImage, currentPrice, currentCategory, currentDescription
 
-},
-{
-    id: 6,
-    title: "Veggie Noodle Pot",
-    category: "lunch",
-    price: 12.45,
-    img: "/assets/images/VeggieNoodlePot.png",
-    des: "Experience a burst of vibrant flavors with our Veggie Noodle Pot. This wholesome and nourishing dish combines colorful vegetables, tender noodles, and aromatic herbs and spices. Whether enjoyed hot or cold, it's a perfect on-the-go meal that packs a punch of freshness, making it a nutritious choice that doesn't compromise on taste."
+        current = document.createElement('div'); // Create Parent Wrapper Div
+        current.setAttribute('class', 'foodComponent'); // Add CSS  
 
-}]
-const current_active_filters = []
-const mock_filters = ['breakfast', 'smoothie', 'lunch', 'dinner']
-const initializer = [undefined, null]
-const filter_set = new Set(initializer)
+        currentImage = document.createElement('img'); // Create Image Element
+        currentImage.setAttribute('src', `${element['img']}`) // Add Img Source
+        current.append(currentImage); // Add To Parent Wrapper
 
-/* Manages */
-function filter_items() {
-    let temp_list, working_list
+        currentTitle = document.createElement('h3'); // Create H3 Element
+        currentTitle.innerText = element['title']; // Add Title
+        current.append(currentTitle); // Add To Parent Wrapper
 
-    for (i = 0 ; i < filter_set.size ; i++) {
-        temp_list = current_menu.filter(function(item) {
-    
-            return filter_set.has(item['category']) == true
-        }
-           )
-        working_list = [...temp_list]
-        
-    }
+        currentPrice = document.createElement('h4'); // Create H3 Element
+        currentPrice.innerText = `${element['price']} €`; // Add Title
+        current.append(currentPrice); // Add To Parent Wrapper
 
-    new_list = [...working_list]
-    return new_list
+
+
+        currentDescription = document.createElement('p');
+        currentDescription.innerText = element['des'];
+        current.append(currentDescription);
+
+        itemsWrapper_El.appendChild(current)
+    });
+
 }
+
+      
+/*              Manage Filter Chips         
+                                                 */
+
+populateMenu(current_Items);
+
+filter_Chips.forEach(item => {
+    item.addEventListener('click', event => {
+        let status, current, value
+
+        current = event.target;
+        status = current.checked;
+        
+        value = current.getAttribute('value');
+        id = current.getAttribute('data-value');
+
+        if (status === true) {
+            item.setAttribute('class','Fil_Chip_container checked');
+
+            active_filters.push(value);
+
+            createDeletechip(id, value);
+
+        } else if(status === false) {
+            item.setAttribute('class','Fil_Chip_container');
+
+            index = active_filters.indexOf(`${value}`)
+            active_filters.splice(index, 1)
+
+
+            removeDeletableChip(id);
+        }
+    })
+})
 
 function createDeletechip(element, element_2){
     let current, button
-
-    element_2.toUpperCase();
 
     current = document.createElement('span');
     current.innerText = `${element_2}`;
@@ -202,159 +218,93 @@ function createDeletechip(element, element_2){
     button.setAttribute('onclick', 'kamikazaDeletablechip(event)')
     current.append(button);
 
-    del_chip_container.appendChild(current);
+    delete_Chips_Wrapper_El.append(current);
 }
 
-function deleteChip(element) {
-    let current = document.getElementById(`${element}`)
+function removeDeletableChip(element) {
+    let current = document.getElementById(`${element}`);
 
+    current.remove();
+}
+
+function kamikazaDeletablechip(event) {
+    let current = event.target.parentElement;
+    let button = event.target
+    let value_ = current.innerText
+    console.log(value_)
     current.remove()
+
+    // Search for FilterChip and Uncheck
+    filter_Chips.forEach(item => {
+        let current = item.firstChild
+        let value = current.getAttribute('data-value');
+        value += '\nX';
+        if (value == `${value_}`) {
+            console.log(value, button)
+        } else {
+            console.log(value)
+        }
+    })
 }
 
-function populateMenu() {
-    let new_list = [] 
-    
-    let filtered_items = filter_items()
-    
-    filtered_items.forEach(item => {
-        let current, currentTitle, currentImage, currentPrice, currentCategory, currentDescription
-
-        current = document.createElement('div'); // Create Parent Wrapper Div
-        current.setAttribute('class', 'foodComponent'); // Add CSS  
-
-        currentImage = document.createElement('img'); // Create Image Element
-        currentImage.setAttribute('src', `${item['img']}`) // Add Img Source
-        current.append(currentImage); // Add To Parent Wrapper
-
-        currentTitle = document.createElement('h3'); // Create H3 Element
-        currentTitle.innerText = item['title']; // Add Title
-        current.append(currentTitle); // Add To Parent Wrapper
-
-        currentPrice = document.createElement('h4'); // Create H3 Element
-        currentPrice.innerText = `${item['price']} €`; // Add Title
-        current.append(currentPrice); // Add To Parent Wrapper
-
-        currentDescription = document.createElement('p');
-        currentDescription.innerText = item['des'];
-        current.append(currentDescription);
-
-        itemsWrapper_El.appendChild(current)
-    });
-
-    let count = filtered_items.length
-    item_counter_Element.innerText = count
-}
-
-function depopulateMenu() {
-    itemsWrapper_El.innerHTML = '';
-}
-
-function manageFilterChips(event) {
-    let current, current_value, status, current_id
-
-    //Add/remove from active Filters
-    current = event.target
-    item = current.parentNode
-    current_value = current.getAttribute('value').toLowerCase()
-    current_id = current.getAttribute('data-value')
-
-    if (filter_set.has(current_value)) {
-        filter_set.delete(current_value)
-
-    } else {
-        filter_set.add(current_value, current_value)
-    }
-
-    //Create/Delete deletable chip
-
-    //Style Active/Default Filter Chip
-    status = current.checked;
-    if (status === true) {
-        item.setAttribute('class','Fil_Chip_wrapper checked');
-        createDeletechip(current_id, current_value)
-
-    } else if(status === false) {
-        item.setAttribute('class','Fil_Chip_wrapper');
-        deleteChip(current_id)
-
-    }
-
-    //FilterItems
-    if (filter_set.size == 2) {
-        depopulateMenu();
-        defaultDisplay()
-    } else {
-        depopulateMenu();
-        populateMenu();
-    }
-
-
-}
 
 function clearAllFilters() {
-    let possible_filters = ['lunch', 'breakfast', 'dinner', 'smoothie']
+    
+    let filter_chips = document.querySelectorAll('.Fil_Chip_container input');
+    let del_chips = document.querySelectorAll('.deletableChips button');
 
-    //Uncheck all filters
-    let fil_chips = document.querySelectorAll('.Fil_Chip_wrapper');
-    fil_chips.forEach(function(item) {
-        let current = item.firstElementChild        
-        
-        if (current.checked == true)  {
-            current.click()
-        } else {
-            console.log('Hi')
+
+    // Uncheck all Filter Chips
+    filter_chips.forEach(item => {
+        item.checked = false;
+        item.parentElement.setAttribute('class','Fil_Chip_container');
+    })
+    // Remove all Deletable Chips
+    del_chips.forEach(item => {
+        item.click()
+    })
+}
+
+function updateDisplay() {
+    let count = current_Items.length
+
+    // Manage Items Counter
+    itemCounter_El.innerText = count;
+
+    populateMenu(current_Items);
+}
+function filter(array_element){
+    let newArray, current, filters_
+
+    // Check active Filters and return them
+    filters_ = ['breakfast', 'dinner']
+
+    newArray = []
+    // Filter Elements
+
+    for (i in filters_) {
+        current = array_element.filter(item => item['category'] == filters_[i])
+
+        for (i in current) {
+            newArray.push(current[i]) 
         }
 
-    })
-    //Clear all deletable chips
-    possible_filters.forEach(item =>
-        filter_set.delete(`${item}`)    
-    )
+        console.log(current)
+        console.log(newArray)
 
-    del_chip_Elements.forEach(item =>
-        item.remove())
+        current_Items = newArray
+    }
 
-    depopulateMenu();
-    defaultDisplay()
+    // Update New List to Current List
+    
+    // Update Display
+    updateDisplay();
 }
 
-function defaultDisplay() {
-    current_menu.forEach(item => {
-        let current, currentTitle, currentImage, currentPrice, currentCategory, currentDescription
-
-        current = document.createElement('div'); // Create Parent Wrapper Div
-        current.setAttribute('class', 'foodComponent'); // Add CSS  
-
-        currentImage = document.createElement('img'); // Create Image Element
-        currentImage.setAttribute('src', `${item['img']}`) // Add Img Source
-        current.append(currentImage); // Add To Parent Wrapper
-
-        currentTitle = document.createElement('h3'); // Create H3 Element
-        currentTitle.innerText = item['title']; // Add Title
-        current.append(currentTitle); // Add To Parent Wrapper
-
-        currentPrice = document.createElement('h4'); // Create H3 Element
-        currentPrice.innerText = `${item['price']} €`; // Add Title
-        current.append(currentPrice); // Add To Parent Wrapper
-
-        currentDescription = document.createElement('p');
-        currentDescription.innerText = item['des'];
-        current.append(currentDescription);
-
-        itemsWrapper_El.appendChild(current)})
-
-        item_counter_Element.innerText = 'alle';
-
-        
+function testingFunction() {
+    alert('Hiiiiii')
 }
 
-function noResultsDiplay() {
-
-}
-
-defaultDisplay();
-
-function hardRefresh() {
-    location.reload(true)
-}
+updateDisplay();
+filter(current_Items);
 

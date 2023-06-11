@@ -15,20 +15,20 @@
         <div class="headerTopWrapper">
             <h2 class="body1"> Filtern nach Kategorie</h2>
             <div>
-                <label id="container" class="Fil_Chip_container"> Breakfast
-                    <input type="checkbox" id="breakfast" value="Breakfast" data-value="skdfh">
+                <label class="Fil_Chip_wrapper"> Breakfast
+                    <input type="checkbox" id="breakfast" value="Breakfast" data-value="skdfh" onclick="manageFilterChips(event)">
                     <span class="checkmark"></span>
                 </label>
-                <label class="Fil_Chip_container"> Lunch
-                    <input type="checkbox" id="lunch" value="Lunch" data-value="dghrv" >
+                <label class="Fil_Chip_wrapper"> Lunch
+                    <input type="checkbox" id="lunch" value="Lunch" data-value="dghrv" onclick="manageFilterChips(event)">
                     <span class="checkmark"></span>
                 </label> 
-                <label class="Fil_Chip_container"> Shake
-                    <input type="checkbox" id="shake" value="Shake" data-value="jfhtr" >
+                <label class="Fil_Chip_wrapper"> Smoothie
+                    <input type="checkbox" id="shake" value="Smoothie" data-value="jfhtr" onclick="manageFilterChips(event)" >
                     <span class="checkmark"></span>
                 </label>
-                <label class="Fil_Chip_container"> Dinner
-                    <input type="checkbox" id="dinner" value="Dinner" data-value="sfwy" onclick="filter(current_Items)">
+                <label class="Fil_Chip_wrapper"> Dinner
+                    <input type="checkbox" id="dinner" value="Dinner" data-value="sfwy" onclick="manageFilterChips(event)">
                     <span class="checkmark"></span>
                 </label>  
             </div>
@@ -42,7 +42,7 @@
                 </div>
                 
             </div>
-            <div id="delWrap">
+            <div id="delChips_Container">
                 <span style="display:none" class="deletableChips" id="deleteChip">
                     Dolor Mi
                     <button>X</button>

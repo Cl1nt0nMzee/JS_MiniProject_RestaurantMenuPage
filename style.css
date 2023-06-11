@@ -321,7 +321,7 @@ border-width: 0 3px 3px 0;
 -ms-transform: rotate(45deg);
 transform: rotate(45deg);
 }
-.Fil_Chip_container {
+.Fil_Chip_wrapper {
 display: inline-flex;
 flex-direction: row;
 justify-content: center;
@@ -355,25 +355,25 @@ user-select: none;
 transition: all 100ms ease;
 }
 
-.Fil_Chip_container:hover{
+.Fil_Chip_wrapper:hover{
 color: var(--accShade-200);
 border: 2px solid var(--accShade-600);
 }
 
-.Fil_Chip_container.checked {
+.Fil_Chip_wrapper.checked {
 border: none;
 color: var(--accShade-200);
 background-color: var(--accShade-700);
 }
-.Fil_Chip_container:hover.checked {
+.Fil_Chip_wrapper:hover.checked {
     color: var(--accShade-100);
     background-color: var(--accShade-800);
 }
-.Fil_Chip_container:has(input[type=checkbox]:focus-visible) {
+.Fil_Chip_wrapper:has(input[type=checkbox]:focus-visible) {
     outline: solid 2px var(--focPurple-25)
 }
 /* Hide the browser's default checkbox */
-.Fil_Chip_container input {
+.Fil_Chip_wrapper input {
 position: absolute;
 opacity: 0;
 cursor: pointer;
@@ -392,16 +392,16 @@ width: 0;
 }
 
 /* On mouse-over, add a grey background color */
-.Fil_Chip_container:hover input ~ .checkmark {
+.Fil_Chip_wrapper:hover input ~ .checkmark {
     background-color: transparent;
 }
 
 /* When the checkbox is checked, add a blue background */
-.Fil_Chip_container input:checked ~ .checkmark {
+.Fil_Chip_wrapper input:checked ~ .checkmark {
     background-color: transparent;
 }
 
-.Fil_Chip_container:has(input:checked) {
+.Fil_Chip_wrapper:has(input:checked) {
     color: var(--accShade-100);
 
     padding-left: 38px;
@@ -412,15 +412,16 @@ width: 0;
     content: "";
     position: absolute;
     display: none;
+    padding-top: 3px;
 }
 
 /* Show the checkmark when checked */
-.Fil_Chip_container input:checked ~ .checkmark:after {
+.Fil_Chip_wrapper input:checked ~ .checkmark:after {
     display: block;
 }
 
 /* Style the checkmark/indicator */
-.Fil_Chip_container .checkmark:after {
+.Fil_Chip_wrapper.checkmark:after {
     left: 6px;
     top: 6px;
     width: 5px;
@@ -432,11 +433,11 @@ width: 0;
     transform: rotate(45deg);
 }
 
-.Fil_Chip_container input {
+.Fil_Chip_wrapper input {
     margin-top: 140px;
 }
 
-.Fil_Chip_container:has(input[type=checkbox]:focus-visible) {
+.Fil_Chip_wrapper:has(input[type=checkbox]:focus-visible) {
     outline: solid 2px var(--focPurple-75);
     outline-offset: 3px;
 }
