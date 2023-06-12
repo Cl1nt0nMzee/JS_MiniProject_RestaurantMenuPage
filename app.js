@@ -26,7 +26,7 @@ const menu_database = [
     },
     {
         id: 3,
-        title: "Poaches Eggs",
+        title: "Poached Eggs",
         category: "breakfast",
         price: 2.35,
         img: "/assets/images/PoachedEggs.png",
